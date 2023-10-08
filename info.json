@@ -1,0 +1,13 @@
+{
+    "name": "Expansion_Rail_Placement",
+    "version": "1.0.0",
+    "title": "Expansion Rail Placement",
+    "author": "Sorahn & Muppet9010",
+    "contact": "",
+    "homepage": "https://mods.factorio.com/mod/Expansion_Rail_Placement",
+    "factorio_version": "1.1",
+    "dependencies": [
+        "base >= 1.1"
+    ],
+    "description": "A demonstration of how Factorio expansion rails could be laid out. NOT A WORKING TRAIN SYSTEM"
+}
