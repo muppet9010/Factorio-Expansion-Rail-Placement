@@ -1,0 +1,10 @@
+OUTCOME - need to do this as a rotatable entity just so that blueprints can be rotated. Don't need all the rotations in the entity, just the ones that BPs can be rotated through.
+
+- Do as an arithmetic combinator as this supports 4 way graphics.
+- Move all the details of a rail out of here to a generic list we then build from.
+- In the control side when the user presses R we need to step through our entity types, then at the end of the list do a rotation on the start of the next loop.
+- Expect 1 entity for each:
+    - N, S, E, W
+    - NNE, SSE, SSW, NNW
+    - NE, SE, SW, SE
+    - NEE, SEE, SWW, NEE

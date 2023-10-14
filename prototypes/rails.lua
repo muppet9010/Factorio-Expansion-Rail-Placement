@@ -6,9 +6,8 @@ local Constants = require("constants");
 ---@field scale double
 ---@field shift? Vector
 
+-- TODO: this file has been half updated to the TODO list, but is very WIP. Was started before the TODO list was made, so it might just all need a redesign tbh.
 
-
--- TODO: need to do this as a rotatable entity just so that blueprints can be rotated. Don't need all the rotations in the entity, just the ones that BPs can be rotated through.
 --- Make a rail prototype.
 --- Needs to be "with force" so it can be blueprinted.
 ---@param name string
@@ -40,21 +39,27 @@ function MakeRail(name, pictureDetails)
 end
 
 -- Add the core rails.
-local testImagesScale = 0.4;
-local railPrototypes = {
+local testImagesScale = 0.5;
+local railHorizontalPrototypes = {
     MakeRail("north", { width = 140, height = 179, scale = testImagesScale }),
-    MakeRail("north-north-east", { width = 270, height = 337, scale = testImagesScale }),
+};
+local railDiagonalPrototypes = {
     MakeRail("north-east", { width = 262, height = 216, scale = testImagesScale })
+};
+local railSlightDiagonalPrototypes = {
+    MakeRail("north-north-east", { width = 270, height = 337, scale = testImagesScale })
 };
 
 -- Use array order for rotation.
-for order, railPrototype in pairs(railPrototypes) do
-    railPrototype.order = tostring(order);
+for _, railPrototypes in pairs({ railHorizontalPrototypes, railDiagonalPrototypes, railSlightDiagonalPrototypes }) do
+    for order, railPrototype in pairs(railPrototypes) do
+        railPrototype.order = tostring(order);
+    end
 end
 
 -- Make placer items for each rail to enable Q to work and for things to be holdable in the cursor as real & ghost.
 local railItems = {};
-for _, railPrototype in pairs(railPrototypes) do
+--[[for _, railPrototype in pairs(railPrototypes) do
     ---@type data.ItemPrototype
     local railItem = {
         type = "item",
@@ -70,7 +75,9 @@ for _, railPrototype in pairs(railPrototypes) do
     table.insert(railItems, railItem);
 
     railPrototype.placeable_by = { item = railItem.name, count = 1 };
-end
+end]]
 
-data:extend(railPrototypes);
-data:extend(railItems);
+data:extend(railHorizontalPrototypes);
+data:extend(railDiagonalPrototypes);
+data:extend(railSlightDiagonalPrototypes);
+--data:extend(railItems);
